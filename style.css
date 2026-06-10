@@ -1,0 +1,244 @@
+/* ==========================================
+   CONFIGURACIÓN GENERAL Y FONDO ADAPTATIVO
+   ========================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #3b82f6, #93c5fd);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    height: 100vh;
+    /* Usar svh (Short Viewport Height) evita que la barra de navegación del móvil tape el diseño */
+    height: 100svh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   TARJETA ADAPTADA PARA PANTALLAS MÓVILES
+   ========================================== */
+.card-container {
+    position: relative;
+    width: 90%;          /* Ocupa el 90% del ancho de la pantalla del celular */
+    max-width: 360px;    /* No se estira más de esto en pantallas grandes */
+    z-index: 10;
+    margin: 0 auto;
+}
+
+.main-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 30px 20px;  /* Padding cómodo para dedos en pantallas táctiles */
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================
+   TEXTOS CENTRADOS Y ESCALABLES
+   ========================================== */
+.title {
+    color: #1e40af;
+    font-size: 1.6rem;    /* Tamaño ideal para leer en móviles sin desbordar */
+    margin-top: 0;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    line-height: 1.2;
+}
+
+.subtitle {
+    color: #ec4899;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.message {
+    color: #334155;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+/* ==========================================
+   IMAGEN DE STITCH OPTIMIZADA
+   ========================================== */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 120px;        /* Tamaño perfecto para que no desplace el contenido hacia abajo */
+    height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    padding: 10px;
+    border: 3px dashed #3b82f6;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ==========================================
+   BOTONES GRANDES DE FÁCIL ACCESO TÁCTIL
+   ========================================== */
+button {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+    transition: all 0.2s ease;
+    width: 100%;         /* El botón ocupa el ancho de la tarjeta en móvil para presionar fácil */
+    max-width: 260px;
+    display: inline-block;
+    -webkit-tap-highlight-color: transparent; /* Elimina el cuadro gris molesto al tocar en móvil */
+}
+
+button:active {
+    transform: scale(0.96); /* Efecto táctil al pulsar */
+}
+
+.audio-control {
+    margin-top: 15px;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    font-size: 0.85rem;
+    padding: 10px 22px;
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
+    margin-top: 5px;
+}
+
+/* ==========================================
+   ZONA DE SORPRESA REVELADA
+   ========================================== */
+.hidden {
+    display: none !important;
+}
+
+#surprise-area {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0fdf4;
+    border-radius: 16px;
+    border: 2px solid #bbf7d0;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#dynamic-text {
+    color: #1e293b;
+    font-weight: 600;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    margin: 0 0 8px 0;
+}
+
+.decorations {
+    font-size: 1.1rem;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================
+   EFECTOS VISUALES DE FONDO (CONFETI Y BURBUJAS)
+   ========================================== */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
+
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: rgba(147, 197, 253, 0.2);
+    border-radius: 50%;
+    animation: rise linear infinite;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   AJUSTE DE SEGURIDAD PARA PANTALLAS MUY PEQUEÑAS
+   ========================================== */
+@media (max-height: 600px) {
+    .main-card {
+        padding: 15px 15px;
+    }
+    .image-container img {
+        width: 90px;
+        height: 90px;
+    }
+    .title {
+        font-size: 1.3rem;
+    }
+    #surprise-area {
+        margin-top: 10px;
+        padding: 10px;
+    }
+}

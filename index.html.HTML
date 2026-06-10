@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Elementos decorativos de fondo -->
+    <div class="bubbles" id="bubbles-container"></div>
+
+    <!-- Tarjeta Principal (Efecto Cristal) -->
+    <div class="card-container">
+        <div class="main-card">
+            <!-- Mensaje principal en grande -->
+            <h1 class="title">¡FELIZ CUMPLEAÑOS! 🎂🎉</h1>
+            <h2 class="subtitle">¡Hoy celebramos tus 12 años! ✨</h2>
+            
+            <div class="image-container">
+                <img src="https://i.pinimg.com/236x/10/95/52/1095523a99baf35365e4ee991858350a.jpg" alt="Stitch" id="stitch-img">
+            </div>
+
+            <p class="message">Presiona el botón para activar tu sorpresa de cumpleaños.</p>
+            
+            <!-- Botón de Sorpresa -->
+            <button id="btn-surprise">¡Activar Sorpresa! ✨</button>
+            
+            <!-- Contenedor del reproductor de música local -->
+            <div class="audio-control">
+                <audio id="bg-music" src="musica.mp3" loop></audio>
+                <button id="btn-music" class="btn-secondary">🎵 Reproducir Música</button>
+            </div>
+            
+            <!-- Área que se revelará -->
+            <div id="surprise-area" class="hidden">
+                <p id="dynamic-text"></p>
+                <div class="decorations">⭐ 💙 🌴 🎈 💙 ⭐</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para la lluvia de confeti -->
+    <div id="confetti-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
